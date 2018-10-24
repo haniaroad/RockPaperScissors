@@ -23,18 +23,7 @@ public class RPSGameApp {
 
 			if (userChoice.equalsIgnoreCase("D")) {
 
-				String gamePick;
-				Roshambo oppPick;
-
-				Dummy rock = new Dummy();
-
-				gamePick = Validator.getString(scan, "Rock, Paper, or Scissors? (R/P/S): ");
-
-				if (gamePick.equalsIgnoreCase("R")) {
-
-					VersusMethod.dummyVersus();
-
-				}
+				VersusMethod.dummyVersus();
 
 			}
 
