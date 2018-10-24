@@ -12,107 +12,41 @@ public class RPSGameApp {
 
 		String userName;
 		String userChoice;
+		String playAgain;
 
-		userName = Validator.getString(scan, "Enter your name: ");
-		user.setName(userName);
+		do {
 
-		userChoice = Validator.getString(scan, "Would you like to play against The Dummy or The Random? (D/R)");
+			userName = Validator.getString(scan, "Enter your name: ");
+			user.setName(userName);
 
-		if (userChoice.equalsIgnoreCase("D")) {
+			userChoice = Validator.getString(scan, "Would you like to play against The Dummy or The Random? (D/R)");
 
-			String gamePick;
-			Roshambo oppPick;
+			if (userChoice.equalsIgnoreCase("D")) {
 
-			Dummy rock = new Dummy();
+				String gamePick;
+				Roshambo oppPick;
 
-			gamePick = Validator.getString(scan, "Rock, Paper, or Scissors? (R/P/S): ");
+				Dummy rock = new Dummy();
 
-			if (gamePick.equalsIgnoreCase("R")) {
+				gamePick = Validator.getString(scan, "Rock, Paper, or Scissors? (R/P/S): ");
 
-				oppPick = Roshambo.ROCK;
+				if (gamePick.equalsIgnoreCase("R")) {
 
-				System.out.println("Your opponent picked Rock. You both tied!");
-
-			} else if (gamePick.equalsIgnoreCase("S")) {
-
-				oppPick = Roshambo.ROCK;
-
-				System.out.println("Your opponent picked Rock. You lost, Dummy won!");
-
-			} else if (gamePick.equalsIgnoreCase("P")) {
-
-				oppPick = Roshambo.ROCK;
-
-				System.out.println("Your opponent picked Rock. You won, Dummy lost!");
-			}
-
-		}
-
-		if (userChoice.equalsIgnoreCase("R")) {
-			
-			String gamePick;
-			
-
-			RandomPick randomOpp = new RandomPick();
-			gamePick = Validator.getString(scan, "Rock, Paper, or Scissors? (R/P/S): ");
-
-			if (gamePick.equalsIgnoreCase("R")) { // Start checking Rock conditions
-
-				Roshambo oppPick = randomOpp.generateRoshambo();
-
-				if (oppPick == Roshambo.PAPER) {
-					System.out.println("Your opponent picked Paper. You lost, random wins!");
-
-				} else if (oppPick == Roshambo.ROCK) {
-
-					System.out.println("Your opponent picked Rock. You both tied!");
-
-				} else if (oppPick == Roshambo.SCISSORS) {
-					System.out.println("Your opponent picked Scissors. You win, random loses!"); // Checking last rock
-																									// conditions
+					VersusMethod.dummyVersus();
 
 				}
 
 			}
 
-			if (gamePick.equalsIgnoreCase("P")) { // Start checking paper conditions
+			if (userChoice.equalsIgnoreCase("R")) {
 
-				Roshambo oppPick = randomOpp.generateRoshambo();
-
-				if (oppPick == Roshambo.PAPER) {
-					System.out.println("Your opponent picked Paper. You both tied!");
-
-				} else if (oppPick == Roshambo.ROCK) {
-
-					System.out.println("Your opponent picked Rock. You win, random loses!");
-
-				} else if (oppPick == Roshambo.SCISSORS) {
-					System.out.println("Your opponent picked Scissors. You lost, random wins!"); // Finish checking
-																									// paper conditions
-
-				}
+				VersusMethod.randomPickVersus();
 
 			}
 
-			if (gamePick.equalsIgnoreCase("S")) { // Start checking Scissor conditions
+			System.out.println("Play again? (Y/N)");
+			playAgain = scan.nextLine();
 
-				Roshambo oppPick = randomOpp.generateRoshambo();
-
-				if (oppPick == Roshambo.PAPER) {
-					System.out.println("Your opponent picked Paper. You win, random loses!");
-
-				} else if (oppPick == Roshambo.ROCK) {
-
-					System.out.println("Your opponent picked Rock. You lost, random wins!");
-
-				} else if (oppPick == Roshambo.SCISSORS) {
-					System.out.println("Your opponent picked Scissors. You both tied!"); // Checking last Scissor
-																							// conditions
-
-				}
-			}
-
-		}
-
+		} while (playAgain.equalsIgnoreCase("Y"));
 	}
 }
